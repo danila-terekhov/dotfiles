@@ -1,0 +1,12 @@
+[user]
+	name = Poiza
+	email = poiza@list.ru
+[core]
+	editor = nvim
+[alias]
+	ck = checkout
+	br = branch
+	st = status
+	cm = commit
+[credential]
+	helper = cache
