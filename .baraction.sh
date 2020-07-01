@@ -3,7 +3,7 @@
 bat() {
 	bat=`cat /sys/class/power_supply/BAT0/capacity`
 	if [ `cat /sys/class/power_supply/BAT0/status` == Charging ]; then bat="+${bat}" ; fi
-	echo -e "BAT:$bat"
+	echo -e "BAT:${bat}%"
 }
 mem() {
 	mem=`free | awk '/Mem/ {printf "%dM/%dM\n", $3/1024.0, $2/1024.0 }'`
