@@ -27,7 +27,7 @@ alias tb="nc termbin.com 9999"
 alias tbc="tb | clip"
 alias vi=nvim
 alias xba=xbacklight
-alias morrowind=openmw
+alias mw=openmw
 
 source ~/.config/git_completions
 
