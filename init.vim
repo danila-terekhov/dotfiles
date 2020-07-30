@@ -19,6 +19,8 @@ colorscheme wal
 nnoremap Q <nop>
 
 syntax enable
+highlight ExtraWhitespace ctermbg=white guibg=white
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 set nocompatible
 set iskeyword+=-
 set clipboard+=unnamedplus " global clipboard
@@ -28,7 +30,7 @@ set nobackup
 set timeoutlen=100
 set updatetime=300
 
-" space -> tab + execution by f9 "
+" space -> tab & execution by f9 "
 autocmd BufRead,BufNewFile *.py set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
