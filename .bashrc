@@ -9,6 +9,7 @@ set -o noclobber # dont override files
 export PATH="$PATH:/usr/local/bin:"
 export PATH="$PATH:/home/poiza/.local/bin:"
 export HISTCONTROL=ignoredups # ignore duplicates in history
+export LESSHISTFILE="/dev/null"
 export BROWSER=qutebrowser
 export EDITOR=nvim
 export EMAIL=poiza@list.ru
@@ -19,13 +20,12 @@ alias reb="sudo shutdown -r now"
 alias grep="grep --color=auto"
 alias ls="ls --color=auto"
 alias l="ls -Al"
+alias rm="rm -rf" # :)
 alias xba="xbacklight"
 alias vi=nvim
-alias warcraft3=wine\ "/home/poiza/.wine/drive_c/Program\ Files\ \(x86\)/Warcraft\ III/war3.exe"\ -opengl
-alias warcraft3roc=wine\ "/home/poiza/.wine/drive_c/Program\ Files\ \(x86\)/Warcraft\ III/Warcraft\ III.exe"\ -opengl
+alias morrowind=openmw
 
-
-#source /usr/share/git/completion/git-completion.bash
+source ~/.config/git_completions
 
 (cat ~/.cache/wal/sequences &) # wal theme
 

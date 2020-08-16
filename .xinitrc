@@ -39,4 +39,3 @@ xbacklight =0.1
 wal -R
 unclutter & # hide pointer
 exec scrotwm
- 
