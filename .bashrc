@@ -17,12 +17,14 @@ export MAIL=$HOME/Mail/
 
 alias shut="sudo shutdown -P now"
 alias reb="sudo shutdown -r now"
+alias pc="xbps-query -l | wc -l"
 alias grep="grep --color=auto"
 alias ls="ls --color=auto"
 alias l="ls -Al"
 alias rm="rm -rf" # :)
-alias xba="xbacklight"
+alias tb="nc termbin.com 9999"
 alias vi=nvim
+alias xba=xbacklight
 alias morrowind=openmw
 
 source ~/.config/git_completions
