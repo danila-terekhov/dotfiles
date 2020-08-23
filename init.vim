@@ -29,6 +29,7 @@ set iskeyword-=_
 set number relativenumber
 set ignorecase smartcase
 set undofile " save undo after exit
+set hidden
 
 " sped "
 set lazyredraw " do not redraw screen after each macro command
@@ -42,6 +43,14 @@ au BufRead,BufNewFile *.py
 	\ set expandtab
 au FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 au FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+" .rb"
+au BufRead,BufNewFile *.rb
+	\ set tabstop=2 |
+	\ set shiftwidth=2 |
+	\ set expandtab
+au FileType ruby map <buffer> <F9> :w<CR>:exec '!ruby' shellescape(@%, 1)<CR>
+au FileType ruby imap <buffer> <F9> <esc>:w<CR>:exec '!ruby' shellescape(@%, 1)<CR>
 
 " hi trailing whitespaces "
 highlight ExtraWhitespace ctermbg=white guibg=white
