@@ -22,7 +22,9 @@ alias grep="grep --color=auto"
 alias ls="ls --color=auto"
 alias l="ls -Al"
 alias rm="rm -rf" # :)
+alias clip="xclip -selection c"
 alias tb="nc termbin.com 9999"
+alias tbc="tb | clip"
 alias vi=nvim
 alias xba=xbacklight
 alias morrowind=openmw
