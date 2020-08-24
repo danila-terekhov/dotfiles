@@ -17,7 +17,6 @@ export MAIL=$HOME/Mail/
 
 alias shut="sudo shutdown -P now"
 alias reb="sudo shutdown -r now"
-alias pc="xbps-query -l | wc -l"
 alias grep="grep --color=auto"
 alias ls="ls --color=auto"
 alias l="ls -Al"
