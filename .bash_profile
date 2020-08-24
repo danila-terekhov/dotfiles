@@ -6,5 +6,5 @@
 export XDG_RUNTIME_DIR="/run/user/1000"
 
 if [ -z "$DISPLAY" ] && [ "$(fgconsole)" -eq 1 ]; then
-	exec startx
+	exec startx &> /dev/null
 fi

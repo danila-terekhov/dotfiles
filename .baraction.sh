@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-bat() {
+# TODO rewrite this shit
+bat() {	
 	bat=`cat /sys/class/power_supply/BAT0/capacity`
+	if [ $bat -lt 20]; then echo "Alarm!!!" ; fi
+	if [ $bat -lt  100]; then sudo runit-init 0 ; fi
 	if [ `cat /sys/class/power_supply/BAT0/status` == Charging ]; then bat="+${bat}" ; fi
 	echo -e "BAT:${bat}%"
 }
