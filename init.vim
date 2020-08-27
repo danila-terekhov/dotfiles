@@ -128,3 +128,11 @@ ono an{ :<c-u>normal! f{va{<cr>
 ono al{ :<c-u>normal! F}va{<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap il{ :<c-u>normal! F}vi{<cr>
+
+" .md
+augroup md_group
+	autocmd!
+	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+	autocmd FileType markdown setlocal cursorline
+	autocmd FileType markdown setlocal conceallevel=2
+augroup END

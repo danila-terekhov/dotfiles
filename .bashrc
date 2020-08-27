@@ -2,8 +2,6 @@
 # If not running interactively, don"t do anything
 [[ $- != *i* ]] && return
 
-bind "set completion-ignore-case on"
-
 set -o noclobber # dont override files
 
 export PATH="$PATH:/usr/local/bin:"
