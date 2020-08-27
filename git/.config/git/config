@@ -9,4 +9,6 @@
 	st = status
 	cm = commit
 [credential]
-	helper = cache
+	helper = store
+[pull]
+	rebase = false

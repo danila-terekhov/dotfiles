@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+volumectl() {
+	case $1 in
+	up)
+		amixer -q sset Master 3%+
+		;;
+	down)
+		amixer -q sset Master 3%-
+		;;
+	switch)
+		amixer -q sset Master toggle 
+		;;
+	*)
+		;;
+	esac
+}
+
+volumectl $1

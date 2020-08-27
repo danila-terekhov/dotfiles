@@ -1,17 +1,20 @@
 # .bashrc
-# If not running interactively, don"t do anything
 [[ $- != *i* ]] && return
+
+[[ -f ~/.config/git/git_completions ]] && . ~/.config/git/git_completions
+[[ -f ~/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &) # wal theme
 
 set -o noclobber # dont override files
 
-export PATH="$PATH:/usr/local/bin:"
-export PATH="$PATH:/home/poiza/.local/bin:"
+
+export PATH="$PATH:~/.local/bin:"
 export HISTCONTROL=ignoredups # ignore duplicates in history
 export LESSHISTFILE="/dev/null"
 export BROWSER=qutebrowser
 export EDITOR=nvim
 export EMAIL=poiza@list.ru
 export MAIL=$HOME/Mail/
+
 
 alias shut="sudo shutdown -P now"
 alias reb="sudo shutdown -r now"
@@ -23,12 +26,7 @@ alias clip="xclip -selection c"
 alias tb="nc termbin.com 9999"
 alias tbc="tb | clip"
 alias vi=nvim
-alias xba=xbacklight
-alias mw=openmw
 
-source ~/.config/git_completions
-
-(cat ~/.cache/wal/sequences &) # wal theme
 
 blue="\[$(tput setaf 6)\]"
 gray="\[$(tput setaf 249)\]"
