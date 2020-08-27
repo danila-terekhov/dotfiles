@@ -15,6 +15,7 @@ imap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 imap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
+
 syntax enable
 colorscheme wal
 set nocompatible
@@ -30,9 +31,6 @@ set ignorecase smartcase
 set undofile " save undo after exit
 set hidden
 set lazyredraw " do not redraw screen after each macro command
-
-"set timeoutlen=100
-"set updatetime=300
 
 " .py: space -> tab & execution by f9 "
 au BufRead,BufNewFile *.py
@@ -56,6 +54,7 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 " learn vimscript the hard way ===============================================
 
 let mapleader = ","
+map ,, , 
 let maplocalleader = "\\"
 
 echo ">^.^<"
