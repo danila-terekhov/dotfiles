@@ -6,35 +6,7 @@
 
 config_version: 2
 settings:
-  aliases:
+  bindings.commands:
     global:
-      q: close
-      qa: quit
-      w: session-save
-      wq: quit --save
-  backend:
-    global: webengine
-  completion.open_categories:
-    global:
-    - searchengines
-    - bookmarks
-    - history
-  completion.scrollbar.padding:
-    global: 0
-  completion.scrollbar.width:
-    global: 0
-  content.mute:
-    global: false
-  content.notifications:
-    global: false
-  content.pdfjs:
-    global: true
-  editor.command:
-    global:
-    - n/vim
-    - -f
-    - '{file}'
-    - -c
-    - normal {line}G{column0}l
-  zoom.default:
-    global: 110%
+      normal:
+        sc: config-source

@@ -7,7 +7,7 @@
 set -o noclobber # dont override files
 
 
-export PATH="$PATH:~/.local/bin:"
+export PATH="$PATH:${HOME}/local/bin:"
 export HISTCONTROL=ignoredups # ignore duplicates in history
 export LESSHISTFILE="/dev/null"
 export BROWSER=qutebrowser

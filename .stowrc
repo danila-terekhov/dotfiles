@@ -1,1 +1,5 @@
 --dotfiles
+# --no-folding prevents stow from creating symlinks to directories,
+# which might result in programmes creating cache files 
+# in the directory in which you cloned this repo
+--no-folding

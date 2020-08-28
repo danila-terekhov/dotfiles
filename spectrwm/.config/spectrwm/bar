@@ -7,15 +7,15 @@ bat() {
 	echo -e "BAT:${bat}%"
 }
 
-mem() {
+ram() {
 	#mem=`free | awk '/Mem/ {printf "%dM/%dM (%d%)\n", $3/1024.0, $2/1024.0, $3/$2*100 }'`
-	mem=`free | awk '/Mem/ {printf "%d%", $3/$2*100.0  }'`
-	echo -e "MEM:$mem"
+	ram=`free | awk '/Mem/ {printf "%d%", $3/$2*100.0  }'`
+	echo -e "RAM:$ram"
 }
 
-pcg() {
-	pcg=`xbps-query -l | wc -l`
-	echo -e "PCG:$pcg"
+pkg() {
+	pkg=`xbps-query -l | wc -l`
+	echo -e "PKG:$pkg"
 }
 
 vol() {
@@ -24,13 +24,13 @@ vol() {
 }
 snd() {
 	snd=`amixer sget Master | awk '/Mono/ {printf "%s%s",  $4, $6}'`
-	echo -e "$snd"
+	echo -e "SND:$snd"
 }
 
 
 SLEEP_SEC=3
 
 while :; do
-	echo "$(bat) | $(mem) | $(vol) | $(pcg)  $(snd) "
+	echo "$(bat) | $(ram) | $(vol) | $(pkg) | $(snd)"
 	sleep $SLEEP_SEC
 done
