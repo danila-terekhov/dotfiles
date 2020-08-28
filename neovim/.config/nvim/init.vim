@@ -137,9 +137,10 @@ augroup html
 augroup END
 
 augroup source
-	autocmd BufWritePost $MYVIMRC :source $MYVIMRC 
+	au!
+	autocmd BufWritePost $MYVIMRC :source $MYVIMRC
 	autocmd BufWritePost *spectrwm.conf execute "!pkill --signal SIGHUP scrotwm"
-	autocmd BufWritePost ~.bashrc execute "!. ~/.bashrc" 
+	autocmd BufWritePost ~.bashrc execute "!. ~/.bashrc"
 	" prev au doesn't worck((9
 	" mb bc of dedicated shell instance ?!?
 augroup END
