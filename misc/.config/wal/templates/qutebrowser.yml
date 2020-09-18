@@ -81,7 +81,7 @@ colors:
             fg: "{foreground}"
             bg: "{color5}"
         stop:
-           fg: "{foreground}"
+            fg: "{foreground}"
             bg: "{color2}"
     hints:
         fg: "{foreground}"

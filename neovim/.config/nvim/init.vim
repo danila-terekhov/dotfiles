@@ -54,17 +54,19 @@ augroup END
 
 nnoremap Q @@
 nnoremap Y y$
+nnoremap ZW :w<cr>
+nnoremap dD "_dd
 imap <Left> <nop>
 imap <Right> <nop>
 imap <Up> <nop>
 imap <Down> <nop>
-nnoremap <leader>r <esc>:w<cr>:call RunScript()<cr>
+nnoremap <leader>r <esc>:w<cr>:call RunScript() <cr>
 
 " Configs
-nnoremap <leader>cv :below split $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>cv :below split $MYVIMRC <cr>
+nnoremap <leader>sv :source $MYVIMRC <cr>
 nnoremap <leader>cb :below split ~/.bashrc <cr>
-nnoremap <leader>cs :below split ~/.spectrwm.conf <cr>
+nnoremap <leader>cs :below split ~/.config/spectrwm/spectrwm.conf <cr>
 
 " }}}
 
@@ -79,18 +81,12 @@ set iskeyword-=_
 set number relativenumber
 set ignorecase smartcase
 set undofile " save undo after exit
-set hidden
+set hidden " dont need to save buffer before switch to another
 set lazyredraw " do not redraw screen after each macro command
 
 " }}}
 
 " Autocmds {{{
-
-augroup vim
-	autocmd!
-	autocmd FileType vim
-	\ setlocal foldmethod=marker
-augroup END
 
 augroup python
 	autocmd!
@@ -98,6 +94,7 @@ augroup python
 	\ setlocal tabstop=4 |
 	\ setlocal shiftwidth=4 |
 	\ setlocal expandtab
+	" prev unneded?
 	au FileType python
 	\ let b:script_command = "python3" |
 	\ setlocal makeprg=pylint\ --output-format=parseable
@@ -110,22 +107,29 @@ augroup ruby
 	\ setlocal shiftwidth=2 |
 	\ setlocal expandtab |
 	\ setlocal makeprg=standardrb
-	au FileType ruby 
+	au FileType ruby
 	\ let b:script_command = "ruby" |
 	\ iabbr <buffer> init initialize<cr><tab>
+augroup END
+
+augroup bash
+	autocmd!
+	au FileType sh
+	\ let b:script_command = "bash"
+	iabbr <buffer> sb #!/usr/bin/env bash<cr>
 augroup END
 
 augroup c
 	autocmd!
 	autocmd Filetype c,cpp
-	\ iabbr <buffer> rr return| 
-	\ iabbr <buffer> return NOPENOPENOPE 
+	\ iabbr <buffer> rr return|
+	\ iabbr <buffer> return NOPENOPENOPE
 augroup END
 
 augroup markdown
 	autocmd!
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
-	autocmd FileType markdown 
+	autocmd FileType markdown
 	\ setlocal cursorline |
 	\ set conceallevel=2
 augroup END
@@ -140,7 +144,7 @@ augroup source
 	au!
 	autocmd BufWritePost $MYVIMRC :source $MYVIMRC
 	autocmd BufWritePost *spectrwm.conf execute "!pkill --signal SIGHUP scrotwm"
-	autocmd BufWritePost ~.bashrc execute "!. ~/.bashrc"
+	autocmd BufWritePost ~/.bashrc execute "!source ~/.bashrc"
 	" prev au doesn't worck((9
 	" mb bc of dedicated shell instance ?!?
 augroup END
@@ -166,3 +170,5 @@ augroup END
 "onoremap il{ :<c-u>normal! F}vi{<cr>
 
 " }}}
+
+" vim:set fdm=marker:

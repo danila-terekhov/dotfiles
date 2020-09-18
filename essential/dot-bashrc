@@ -6,14 +6,12 @@
 
 set -o noclobber # dont override files
 
-
-export PATH="$PATH:${HOME}/local/bin:"
-export HISTCONTROL=ignoredups # ignore duplicates in history
+export PATH="$PATH:${HOME}/.local/bin:"
+export HISTCONTROL=ignoredups
 export LESSHISTFILE="/dev/null"
 export BROWSER=qutebrowser
 export EDITOR=nvim
 export EMAIL=poiza@list.ru
-export MAIL=$HOME/Mail/
 
 
 alias shut="sudo shutdown -P now"
@@ -25,7 +23,7 @@ alias rm="rm -rf" # :)
 alias clip="xclip -selection c"
 alias tb="nc termbin.com 9999"
 alias tbc="tb | clip"
-alias vi=nvim
+alias vi=$EDITOR
 
 
 blue="\[$(tput setaf 6)\]"
@@ -33,3 +31,23 @@ gray="\[$(tput setaf 249)\]"
 dark_gray="\[$(tput setaf 240)\]"
 reset="\[$(tput sgr0)\]"
 PS1="${dark_gray}\$?${blue}[\W]${gray}λ${reset} "
+
+
+#TODO maybe refactor?
+alias show='cat ~/.dirs'
+save () {
+    here=`pwd`
+    if (( $# == 0 )); then
+        name=`basename $here`
+    elif (( $# > 1 )); then
+        echo "usage: save [<name>]"
+        return -1
+    else
+        name=$1
+    fi
+    sed -i -e "/^$name=/d" ~/.dirs
+    echo "$name=\"$here\"" >> ~/.dirs
+    source ~/.dirs
+}
+source ~/.dirs
+shopt -s cdable_vars

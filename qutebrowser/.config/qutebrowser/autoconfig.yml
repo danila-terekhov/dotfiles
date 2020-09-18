@@ -10,3 +10,24 @@ settings:
     global:
       normal:
         sc: config-source
+  completion.open_categories:
+    global:
+    - searchengines
+    - bookmarks
+    - history
+  statusbar.position:
+    global: bottom
+  statusbar.show:
+    global: in-mode
+  tabs.background:
+    global: true
+  tabs.position:
+    global: top
+  tabs.show:
+    global: always
+  url.default_page:
+    global: file:///home/poiza/.config/qutebrowser/homepage.html
+  url.start_pages:
+    global: file:///home/poiza/.config/qutebrowser/homepage.html
+  zoom.default:
+    global: 110%
