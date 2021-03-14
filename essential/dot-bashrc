@@ -3,10 +3,14 @@
 
 [[ -f ~/.config/git/git_completions ]] && . ~/.config/git/git_completions
 [[ -f ~/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &) # wal theme
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
 
 set -o noclobber # dont override files
 
-export PATH="$PATH:${HOME}/.local/bin:"
+export PATH="$PATH:${HOME}/.local/bin"
+export PATH="$PATH:/usr/local/go/bin"
 export HISTCONTROL=ignoredups
 export LESSHISTFILE="/dev/null"
 export BROWSER=qutebrowser
@@ -19,11 +23,11 @@ alias reb="sudo shutdown -r now"
 alias grep="grep --color=auto"
 alias ls="ls --color=auto"
 alias l="ls -Al"
-alias rm="rm -rf" # :)
 alias clip="xclip -selection c"
 alias tb="nc termbin.com 9999"
 alias tbc="tb | clip"
 alias vi=$EDITOR
+alias ghc="gh repo clone"
 
 
 blue="\[$(tput setaf 6)\]"

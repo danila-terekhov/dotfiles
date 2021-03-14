@@ -9,12 +9,18 @@ settings:
   bindings.commands:
     global:
       normal:
+        ',': bookmark-del
         sc: config-source
   completion.open_categories:
     global:
     - searchengines
     - bookmarks
     - history
+  content.notifications:
+    https://aliexpress.ru: false
+    https://street-beat.ru: false
+    https://www.reddit.com: false
+    https://www.youtube.com: false
   statusbar.position:
     global: bottom
   statusbar.show:

@@ -34,19 +34,16 @@ Plug 'zchee/deoplete-clang'
 "Plug 'fishbullet/deoplete-ruby'
 Plug 'dylanaraps/wal.vim'
 Plug 'ap/vim-css-color'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'vim-scripts/java_getset.vim'
+Plug 'w0rp/ale'
+Plug 'SirVer/ultisnips'
 
 call plug#end()
 
-" deoplete 
+" deoplete
 let g:deoplete#enable_at_startup = 1
 
-imap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-imap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-augroup deoplete
-	autocmd!
-	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-augroup END
 
 "}}}
 
@@ -83,6 +80,9 @@ set ignorecase smartcase
 set undofile " save undo after exit
 set hidden " dont need to save buffer before switch to another
 set lazyredraw " do not redraw screen after each macro command
+"set wildmenu " default on
+set path+=**
+
 
 " }}}
 
@@ -168,6 +168,34 @@ augroup END
 "ono al{ :<c-u>normal! F}va{<cr>
 "onoremap in{ :<c-u>normal! f{vi{<cr>
 "onoremap il{ :<c-u>normal! F}vi{<cr>
+
+" }}}
+
+" java {{{
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java JCEnable
+
+" Shorten error/warning flags
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+" I have some custom icons for errors and warnings but feel free to change them.
+let g:ale_sign_error = '✘✘'
+let g:ale_sign_warning = '⚠⚠'
+
+" Disable or enable loclist at the bottom of vim
+" Comes down to personal preferance.
+let g:ale_open_list = 0
+let g:ale_loclist = 0
+
+
+" Setup compilers for languages
+
+let g:ale_linters = {
+      \  'cs':['syntax', 'semantic', 'issues'],
+      \  'python': ['pylint'],
+      \  'java': ['javac']
+      \ }
 
 " }}}
 

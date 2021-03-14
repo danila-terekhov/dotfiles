@@ -3,3 +3,5 @@
 if [ -z "$DISPLAY" ] && [ "$(fgconsole)" -eq 1 ]; then
 	exec startx &> /dev/null
 fi
+
+eval `ssh-agent`
