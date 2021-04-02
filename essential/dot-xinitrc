@@ -33,8 +33,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 #xset r rate 400 50 #upgrade speed of repeating
-setxkbmap -option caps:swapescape # swap escape and caps_lock
-xbacklight =0.1
-wal -R
+#setxkbmap -option caps:escape
+
+# click on tap
+xinput set-prop 12 337 1
+setxkbmap -layout us,ru -option grp:alt_space_toggle
+picom -i 0.75 &
 unclutter & # hide pointer
-exec scrotwm
+wal -i ~/Drive/wallpapers/Cyan-rotated
+exec bspwm
+

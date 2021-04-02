@@ -2,16 +2,25 @@
 [[ $- != *i* ]] && return
 
 [[ -f ~/.config/git/git_completions ]] && . ~/.config/git/git_completions
-[[ -f ~/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &) # wal theme
+
+# fzf
+[[ -f /usr/share/fzf/key-bindings.bash ]] && . /usr/share/fzf/key-bindings.bash
+[[ -f /usr/share/fzf/completion.bash ]] && . /usr/share/fzf/completion.bash
+export FZF_DEFAULT_OPTS="--inline-info --reverse --height 30%"
+
+# k8s
+. <(kubectl completion bash)
+alias k=kubectl
+alias kc=kubectx
+alias kn=kubens
+complete -F __start_kubectl k
+
 
 set -o noclobber # dont override files
 
-export PATH="$PATH:${HOME}/.local/bin:"
-export HISTCONTROL=ignoredups
-export LESSHISTFILE="/dev/null"
-export BROWSER=qutebrowser
+
+export PATH="$PATH:$HOME/.local/bin:"
 export EDITOR=nvim
-export EMAIL=poiza@list.ru
 
 
 alias shut="sudo shutdown -P now"
@@ -19,7 +28,6 @@ alias reb="sudo shutdown -r now"
 alias grep="grep --color=auto"
 alias ls="ls --color=auto"
 alias l="ls -Al"
-alias rm="rm -rf" # :)
 alias clip="xclip -selection c"
 alias tb="nc termbin.com 9999"
 alias tbc="tb | clip"
@@ -33,21 +41,11 @@ reset="\[$(tput sgr0)\]"
 PS1="${dark_gray}\$?${blue}[\W]${gray}λ${reset} "
 
 
-#TODO maybe refactor?
-alias show='cat ~/.dirs'
-save () {
-    here=`pwd`
-    if (( $# == 0 )); then
-        name=`basename $here`
-    elif (( $# > 1 )); then
-        echo "usage: save [<name>]"
-        return -1
-    else
-        name=$1
-    fi
-    sed -i -e "/^$name=/d" ~/.dirs
-    echo "$name=\"$here\"" >> ~/.dirs
-    source ~/.dirs
+count_db () {
+    tail -n +33 $1 | paste -sd+ | bc
 }
-source ~/.dirs
-shopt -s cdable_vars
+
+merge_kubeconfig () {
+    mv ~/.kube/config ~/.kube/config.backup
+    KUBECONFIG=~/.kube/config.backup:$1 kubectl config view --raw > ~/.kube/config
+}

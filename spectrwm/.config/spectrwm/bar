@@ -14,12 +14,12 @@ ram() {
 }
 
 pkg() {
-	pkg=`xbps-query -l | wc -l`
+	pkg=`pacman -Q | wc -l`
 	echo -e "PKG:$pkg"
 }
 
 vol() {
-	vol=`df -h | awk '/mmcblk1p3/  {print $5}'`
+	vol=`df -h | awk '/nvme0n1p7/  {print $5}'`
 	echo -e "VOL:$vol"
 }
 snd() {

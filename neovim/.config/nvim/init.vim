@@ -34,6 +34,8 @@ Plug 'zchee/deoplete-clang'
 "Plug 'fishbullet/deoplete-ruby'
 Plug 'dylanaraps/wal.vim'
 Plug 'ap/vim-css-color'
+Plug 'pearofducks/ansible-vim'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -126,13 +128,13 @@ augroup c
 	\ iabbr <buffer> return NOPENOPENOPE
 augroup END
 
-augroup markdown
-	autocmd!
-	autocmd BufNewFile,BufRead *.md set filetype=markdown
-	autocmd FileType markdown
-	\ setlocal cursorline |
-	\ set conceallevel=2
-augroup END
+"augroup markdown
+"	autocmd!
+"	autocmd BufNewFile,BufRead *.md set filetype=markdown
+"	autocmd FileType markdown
+"	"\ setlocal cursorline |
+"	"set conceallevel=2
+"augroup END
 
 augroup html
 	autocmd!
