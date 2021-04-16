@@ -10,6 +10,10 @@ super + Return
 super + a
 	flameshot gui
 
+# date
+super + d
+	notify-send "`date`"
+
 # program launcher
 super + shift + Return
 	dmenu_run

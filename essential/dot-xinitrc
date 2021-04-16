@@ -40,6 +40,5 @@ xinput set-prop 12 337 1
 setxkbmap -layout us,ru -option grp:alt_space_toggle
 picom -i 0.75 &
 unclutter & # hide pointer
-wal -i ~/Drive/wallpapers/Cyan-rotated
 exec bspwm
 
