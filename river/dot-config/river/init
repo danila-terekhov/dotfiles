@@ -8,15 +8,20 @@
 # documentation.
 
 
-riverctl map normal Super Return spawn fuzzel
-riverctl map normal Super T spawn alacritty
-riverctl map normal Super+Shift Return spawn foot
+riverctl map normal Super E spawn fuzzel
+riverctl map normal Super T spawn foot
+
+riverctl keyboard-layout -options "grp:alt_shift_toggle,caps:escape" us,ru
+
+# move cursor after changing focus with kb
+riverctl set-cursor-warp on-focus-change
+riverctl focus-follows-cursor normal
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
 
 # Super+Shift+E to exit river
-riverctl map normal Super+Shift E exit
+riverctl map normal Super+Shift Q exit
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next
@@ -27,6 +32,9 @@ riverctl map normal Super K focus-view previous
 riverctl map normal Super+Shift J swap next
 riverctl map normal Super+Shift K swap previous
 
+# Super+Return to bump the focused view to the top of the layout stack
+riverctl map normal Super Return zoom
+
 # Super+Period and Super+Comma to focus the next/previous output
 riverctl map normal Super Period focus-output next
 riverctl map normal Super Comma focus-output previous
@@ -34,9 +42,6 @@ riverctl map normal Super Comma focus-output previous
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
 riverctl map normal Super+Shift Period send-to-output next
 riverctl map normal Super+Shift Comma send-to-output previous
-
-# Super+Return to bump the focused view to the top of the layout stack
-riverctl map normal Super Return zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
@@ -140,9 +145,10 @@ do
 done
 
 # Set background and border color
-riverctl background-color 0x002b36
+riverctl background-color 0x579c8e
 riverctl border-color-focused 0x93a1a1
 riverctl border-color-unfocused 0x586e75
+riverctl border-width 2
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -157,3 +163,6 @@ riverctl rule-add -app-id "bar" csd
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
+
+riverctl spawn "wlr-randr --output DP-2 --above eDP-1"
+riverctl spawn "wlr-randr --output DP-2 --scale 1.5"

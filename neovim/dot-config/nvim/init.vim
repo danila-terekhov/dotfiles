@@ -32,7 +32,6 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-clang'
 "Plug 'fishbullet/deoplete-ruby'
-Plug 'dylanaraps/wal.vim'
 Plug 'ap/vim-css-color'
 Plug 'pearofducks/ansible-vim'
 Plug 'vimwiki/vimwiki'
@@ -75,7 +74,6 @@ nnoremap <leader>cs :below split ~/.config/spectrwm/spectrwm.conf <cr>
 " Setters {{{
 
 syntax enable
-colorscheme wal
 
 set nocompatible
 set clipboard+=unnamedplus " global clipboard
