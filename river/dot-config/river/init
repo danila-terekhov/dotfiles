@@ -145,7 +145,7 @@ do
 done
 
 # Set background and border color
-riverctl background-color 0x579c8e
+riverctl background-color 0xffffff
 riverctl border-color-focused 0x93a1a1
 riverctl border-color-unfocused 0x586e75
 riverctl border-width 2
@@ -166,3 +166,5 @@ rivertile -view-padding 6 -outer-padding 6 &
 
 riverctl spawn "wlr-randr --output DP-2 --above eDP-1"
 riverctl spawn "wlr-randr --output DP-2 --scale 1.5"
+
+exec mako
