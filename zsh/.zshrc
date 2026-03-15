@@ -84,8 +84,4 @@ setopt globdots
 
 autoload -U +X bashcompinit && bashcompinit
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 export FZF_DEFAULT_OPTS="--inline-info --reverse --height 40%"
