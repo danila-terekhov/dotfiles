@@ -1,0 +1,19 @@
+# Increase volume
+"wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+   XF86AudioRaiseVolume
+
+# Decrease volume
+"wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
+   XF86AudioLowerVolume
+
+# Mute volume
+"pamixer --toggle-mute"
+   XF86AudioMute
+
+# Increase brightness
+"brightnessctl set +5%"
+   XF86MonBrightnessUp
+
+# Decrease brightness
+"brightnessctl set -5%"
+   XF86MonBrightnessDown

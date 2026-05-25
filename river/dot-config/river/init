@@ -10,6 +10,8 @@
 
 riverctl map normal Super E spawn fuzzel
 riverctl map normal Super T spawn foot
+riverctl map normal Super S spawn "sh -c 'grim -g \"\$(slurp)\" - | wl-copy'"
+riverctl map normal None PrtSc spawn "sh -c 'grim -g \"\$(slurp)\" - | wl-copy'"
 
 riverctl keyboard-layout -options "grp:alt_shift_toggle,caps:escape" us,ru
 
@@ -129,8 +131,8 @@ do
     riverctl map $mode None XF86Eject spawn 'eject -T'
 
     # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
-    riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
-    riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
+    riverctl map $mode None XF86AudioRaiseVolume  spawn 'wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+'
+    riverctl map $mode None XF86AudioLowerVolume  spawn 'wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-'
     riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
 
     # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
@@ -162,10 +164,18 @@ riverctl rule-add -app-id "bar" csd
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+#rivertile -view-padding 3 -outer-padding 3 &
+rivertile -view-padding 0 -outer-padding 0 &
 
 riverctl spawn "wlr-randr --output DP-2 --above eDP-1"
 riverctl spawn "wlr-randr --output DP-2 --scale 1.5"
 
+# make screen sharing work
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+systemctl --user restart xdg-desktop-portal
+
+
 riverctl spawn "waybar"
 riverctl spawn "mako"
+

@@ -86,3 +86,6 @@ setopt globdots
 autoload -U +X bashcompinit && bashcompinit
 
 export FZF_DEFAULT_OPTS="--inline-info --reverse --height 40%"
+
+#theme.sh selenized-black
+theme.sh gruvbox-dark
