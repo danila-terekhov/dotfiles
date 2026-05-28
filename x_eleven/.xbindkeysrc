@@ -15,5 +15,8 @@
    XF86MonBrightnessUp
 
 # Decrease brightness
-"brightnessctl set -5%"
+"brightnessctl set 5%-"
    XF86MonBrightnessDown
+
+"maim -s -b 3 -c 10,10,10,10 | xclip -selection clipboard -t image/png"
+   Print

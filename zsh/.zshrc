@@ -75,6 +75,7 @@ alias teleport_update_cache='tsh ls -f names >$HOME/.cache/teleport-list 2>/dev/
 alias c='TERM=xterm-256color tsh ssh ubuntu@$(cat $HOME/.cache/teleport-list | fzf)'
 alias vii="fzf --bind 'enter:become(vim {})'"
 alias pr="gh pr create --fill"
+alias cal="cal -3 -m"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

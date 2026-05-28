@@ -46,7 +46,8 @@ if [ -d "$xinitdir"/xinitrc.d ] ; then
 	unset f
 fi
 
-setxkbmap -option && setxkbmap -layout us,ru -option "grp:ctrl_alt_toggle,caps:escape"
+setxkbmap -option && setxkbmap -layout us,ru -option "grp:shifts_toggle,caps:escape"
 slstatus &
 dunst &
+xbindkeys &
 exec dwm
