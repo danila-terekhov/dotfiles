@@ -47,7 +47,9 @@ if [ -d "$xinitdir"/xinitrc.d ] ; then
 fi
 
 setxkbmap -option && setxkbmap -layout us,ru -option "grp:shifts_toggle,caps:escape"
+xset s off -dpms
+xbindkeys
+easyeffects --service-mode &
 slstatus &
 dunst &
-xbindkeys &
 exec dwm

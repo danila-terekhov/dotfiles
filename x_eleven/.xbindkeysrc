@@ -1,3 +1,7 @@
+# xbindkeys -n         # test
+# xbindkeys --multikey # show used keys
+
+
 # Increase volume
 "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
    XF86AudioRaiseVolume
